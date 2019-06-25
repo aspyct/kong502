@@ -1,0 +1,30 @@
+_format_version: "1.1"
+
+services:
+  - name: buggy-service
+    url: http://buggy-service:8000/
+    routes:
+    - name: no-answer
+      paths:
+      - /nothing
+
+  - name: weird-answer
+    url: http://buggy-service:8001/
+    routes:
+    - name: weird-answer
+      paths:
+      - /weird
+
+  - name: static-http
+    url: http://buggy-service:8002/
+    routes:
+    - name: static-http
+      paths:
+      - /static
+
+
+plugins:
+- name: udp-log
+  config:
+    host: udp-log
+    port: 8000
